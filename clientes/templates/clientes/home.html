@@ -4,21 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'clientes/css/clientes.css' %}">
+    <link rel="stylesheet" href="{% static 'cliente.css/clientes.css' %}">
     <title>Home</title>
 </head>
 <body>
+
+    <div class="root-bar">
+        Home
+    </div>
+
     <nav class="navbar">
-        <a href="/">Home</a>
         <ul class="nav-links">
             <li><a href="{% url 'agendar' %}">Agendar</a></li>
             <li><a href="{% url 'servicos' %}">Serviços</a></li>
         </ul>
     </nav>
 
-    <header>
+    <div class="main-content">
         <h1>Bem-vindo ao Mecajato</h1>
-    </header>
+    </div>
+
+    <div class="root-bar-bottom">
+        © 2024 Mecajato
+    </div>
+
+    <script src="{% static 'cliente.js/cleientes.js' %}"></script>
 
 </body>
 </html>
