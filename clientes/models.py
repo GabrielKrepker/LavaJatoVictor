@@ -33,6 +33,7 @@ class Agendamento(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     funcionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
     data_hora = models.DateTimeField()
+    concluido = models.BooleanField(default=False)
 
     def __str__(self):
         return f'Agendamento: {self.cliente} com {self.funcionario} em {self.data_hora}'
