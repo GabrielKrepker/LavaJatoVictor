@@ -4,62 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'cliente.css/servicos.css' %}">
+    <link rel="stylesheet" href="{% static 'cliente.css/servico.css' %}">
     <title>Serviços</title>
 </head>
 <body>
 
     <div class="root-bar">
-        Serviços
+        <div class="welcome">
+            <div>Bem-Vindo, {{ usuario_nome }} !</div>
+            <a href="{% url 'logout_user' %}" class="logout-link">Sair agora</a>
+        </div>
+        <a href="{% url 'agendar' %}" class="agendar-link">Agendar</a>
     </div>
-
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'agendar' %}">Agendar</a></li>
-        </ul>
-    </nav>
 
     <div class="main-content">
-        <h1>Serviços</h1>
+        <div class="content-container">
+            <h1>Serviços</h1>
 
-        <section>
-            <h2>Serviços Realizados</h2>
-            <ul>
-                {% for agendamento in realizados %}
-                    <li>
-                        {{ agendamento.cliente.nome }} - {{ agendamento.funcionario.nome }} - {{ agendamento.data_hora }}
-                        <form method="POST" style="display: inline;">
-                            {% csrf_token %}
-                            <input type="hidden" name="agendamento_id" value="{{ agendamento.id }}">
-                            <input type="checkbox" name="concluido" {% if agendamento.concluido %}checked{% endif %} onchange="this.form.submit()">
-                        </form>
-                    </li>
-                {% empty %}
-                    <li>Não há serviços realizados ainda.</li>
-                {% endfor %}
-            </ul>
-        </section>
+            <div class="section">
+                <h2>Serviços Realizados</h2>
+                <ul>
+                    {% for agendamento in realizados %}
+                        <li>{{ agendamento.cliente.nome }} - {{ agendamento.funcionario.nome }} - {{ agendamento.data_hora }}</li>
+                    {% empty %}
+                        <li>Não há serviços realizados.</li>
+                    {% endfor %}
+                </ul>
+            </div>
 
-        <section>
-            <h2>Serviços a Serem Feitos</h2>
-            <ul>
-                {% for agendamento in futuros %}
-                    <li>
-                        {{ agendamento.cliente.nome }} - {{ agendamento.funcionario.nome }} - {{ agendamento.data_hora }}
-                    </li>
-                {% empty %}
-                    <li>Não há serviços agendados para os próximos dias.</li>
-                {% endfor %}
-            </ul>
-        </section>
-    </div>
+            <div class="section">
+                <h2>Serviços Futuros</h2>
+                <ul>
+                    {% for agendamento in futuros %}
+                        <li>{{ agendamento.cliente.nome }} - {{ agendamento.funcionario.nome }} - {{ agendamento.data_hora }}</li>
+                    {% empty %}
+                        <li>Não há serviços futuros agendados.</li>
+                    {% endfor %}
+                </ul>
+            </div>
 
-    <div class="root-bar-bottom">
-        © 2024 Mecajato
+        </div>
     </div>
 
     <script src="{% static 'cliente.js/clientes.js' %}"></script>
-
 </body>
 </html>
