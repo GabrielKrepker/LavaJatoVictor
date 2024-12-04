@@ -4,49 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'cliente.css/clientes.css' %}">
+    <link rel="stylesheet" href="{% static 'cliente.css/agendar.css' %}">
     <title>Agendar Serviço</title>
 </head>
 <body>
 
     <div class="root-bar">
-        Agendar
+        <div class="welcome">
+            <div>Bem-Vindo, {{ usuario_nome }} !</div>
+            <a href="{% url 'logout_user' %}" class="logout-link">Sair agora</a>
+        </div>
+        <a href="{% url 'servicos' %}" class="services-link">Serviços</a>
     </div>
-
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'servicos' %}">Serviços</a></li>
-        </ul>
-    </nav>
 
     <div class="main-content">
-        <h1>Agendar Serviço</h1>
-        <form method="POST">
-            {% csrf_token %}
-            <label for="cliente">Cliente:</label>
-            <select name="cliente" required>
-                {% for cliente in clientes %}
-                    <option value="{{ cliente.id }}">{{ cliente.nome }}</option>
-                {% endfor %}
-            </select>
+        <div class="content-container">
+            <h1>Agendar Serviço</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <label for="cliente">Cliente:</label>
+                <select name="cliente" required>
+                    {% for cliente in clientes %}
+                        <option value="{{ cliente.id }}">{{ cliente.nome }}</option>
+                    {% endfor %}
+                </select>
 
-            <label for="funcionario">Funcionário:</label>
-            <select name="funcionario" required>
-                {% for funcionario in funcionarios %}
-                    <option value="{{ funcionario.id }}">{{ funcionario.nome }}</option>
-                {% endfor %}
-            </select>
+                <label for="funcionario">Funcionário:</label>
+                <select name="funcionario" required>
+                    {% for funcionario in funcionarios %}
+                        <option value="{{ funcionario.id }}">{{ funcionario.nome }}</option>
+                    {% endfor %}
+                </select>
 
-            <label for="data_hora">Data e Hora:</label>
-            <input type="datetime-local" name="data_hora" required>
+                <label for="data_hora">Data e Hora:</label>
+                <input type="datetime-local" name="data_hora" required>
 
-            <button type="submit">Agendar</button>
-        </form>
-    </div>
-
-    <div class="root-bar-bottom">
-        © 2024 Mecajato
+                <button type="submit" class="btn-register-submit">Agendar</button>
+            </form>
+        </div>
     </div>
 
     <script src="{% static 'cliente.js/clientes.js' %}"></script>
