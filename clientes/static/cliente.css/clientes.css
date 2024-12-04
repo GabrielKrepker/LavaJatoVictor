@@ -17,41 +17,11 @@ body {
     text-align: left;
     font-size: 24px;
     font-weight: bold;
-}
-
-.navbar {
-    display: flex;
-    justify-content: center;
-    background-color: #333;
-    padding: 20px 10px;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links li {
-    list-style: none;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 18px;
-    padding: 12px 20px;
-    border-radius: 5px;
-    background-color: #555;
-    transition: background-color 0.3s ease;
-}
-
-.nav-links a:hover {
-    background-color: #888;
-}
-
-.nav-links a:active {
-    background-color: #000;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
 .main-content {
@@ -59,48 +29,91 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: calc(100vh - 160px);
-    text-align: center;
-    padding: 20px;
+    padding: 100px 20px 20px;
+    height: 100vh;
 }
 
-h1 {
-    font-size: 36px;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-form {
-    background-color: #fff;
-    padding: 20px;
+.content-container {
+    background-color: white;
     border-radius: 8px;
+    padding: 40px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
+    text-align: center;
 }
 
-form input, form select, form button {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 5px;
+h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
 }
 
-form button {
-    background-color: #000;
-    color: #fff;
+.btn-register, .btn-register-submit {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
     border: none;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-form button:hover {
-    background-color: #444;
+.btn-register-submit:hover, .btn-register:hover {
+    background-color: #0056b3;
 }
 
-form button:active {
-    background-color: #222;
+.btn-register {
+    background-color: #333;
+}
+
+.btn-register:hover {
+    background-color: #555;
+}
+
+.btn-register-submit {
+    background-color: #4CAF50;
+}
+
+.btn-register-submit:hover {
+    background-color: #45a049;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-back {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    background-color: #5a6268;
+}
+
+.hidden {
+    display: none;
 }
 
 .error, .success {
