@@ -28,3 +28,23 @@ window.addEventListener('scroll', function() {
     }
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
+
+document.getElementById('show-register').addEventListener('click', function() {
+    document.getElementById('login-container').style.display = 'none';
+    document.getElementById('register-container').style.display = 'block';
+});
+
+document.getElementById('back-to-login').addEventListener('click', function() {
+    document.getElementById('register-container').style.display = 'none';
+    document.getElementById('login-container').style.display = 'block';
+});
+
+function showTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+    
+    document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active'));
+    
+    document.getElementById(tabId).classList.remove('hidden');
+    
+    document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+}
